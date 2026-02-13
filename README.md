@@ -1,2 +1,1 @@
-# elite-ai-systems-engineer-2026
-52-week journey to become an elite ai systems engineer
+"Week 1 starts 16 Feb, 2026" 
