@@ -139,7 +139,14 @@ Momentum showed the most reliable behaviour in the short-run mini-batch
 setting. However, when training was extended and full-batch gradients were
 used, all optimizers successfully converged to the optimal parameter.
 
----
+---## Optimization Animation
+
+The animation below shows how the parameter θ evolves during
+training when using the Adam optimizer.
+
+![Optimization Animation](../animations/adam_lr_animation.gif)
+
+
 
 # Next Steps
 
