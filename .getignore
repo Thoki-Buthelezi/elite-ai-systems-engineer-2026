@@ -110,3 +110,14 @@ cython_debug/
 # PyCharm
 # Uncomment the following line to ignore the entire idea folder
 #.idea/
+# Python cache
+__pycache__/
+*.py[cod]
+
+# virtual environments
+venv/
+.venv/
+
+# experiment outputs
+results/
+plots/
