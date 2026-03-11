@@ -3,7 +3,7 @@ import math
 class Adam:
 
     #initialise optimizer parameters
-    def __init__(self, lr=0.01, p1=0.9, p2=0.999, eps=1e-8):
+    def __init__(self, lr=0.001, p1=0.9, p2=0.999, eps=1e-8):
         self.lr = lr
         self.p1 = p1 # decay rate for the 1st order moment
         self.p2 = p2 # decay rate for the 2nd order moment

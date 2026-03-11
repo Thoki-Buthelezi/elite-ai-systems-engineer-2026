@@ -1,7 +1,7 @@
 class Momentum:
 
     #initialise optimizer parameters
-    def __init__(self, lr = 0.01, alpha=0.09):
+    def __init__(self, lr = 0.001, alpha=0.09):
         self.lr = lr
         self.alpha = alpha 
         self.v = 0 #velocity
