@@ -31,3 +31,24 @@ Since the method follows a gradient, it also converged to a local minimum.
 
 ## AdaGrad
 AdaGrad performed the worst among the 4 optimizers, AdaGrad adapts the learning rate by accumulating the sqaured of the previoius gradients. This makes the learning rate to premaature and excesively decrease
+
+## Conclusion
+
+This experiment demonstrates the behavior of several popular optimization algorithms on a highly non-convex function.
+
+**Key findings include:**
+
+Adam and RMSProp showed the most stable optimization behavior.
+
+Momentum converged more slowly but still improved the optimization trajectory.
+
+AdaGrad performed poorly due to the continual decay of its learning rate.
+
+All optimizers became trapped in local minima, highlighting the limitations of gradient-based methods when dealing with highly multimodal landscapes.
+
+The results suggest that escaping local minima may require more advanced optimization strategies such as:
+
+-Simulated annealing
+-Evolutionary algorithms
+-Particle swarm optimization
+-Random restarts
