@@ -34,6 +34,7 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.title("Optimizer Trajectories on Rosenbrock Function")
 plt.legend()
-plt.show()
 
 plt.savefig("plots/optimizer_rosenbrock.png")
+
+plt.show()

@@ -46,8 +46,9 @@ plt.xlabel("x")
 plt.ylabel("y")
 plt.title("Optimizer Trajectories on Rastrigin Function")
 plt.legend()
-plt.show()
 
 plt.savefig("plots/optimizer_rastrigin.png")
+
+plt.show()
 
 
