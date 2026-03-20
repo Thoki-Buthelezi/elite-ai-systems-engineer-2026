@@ -68,7 +68,7 @@ class NeuralNet:
             if i % 100 == 0:
                 print(f"Epoch {i}, Loss: {loss}")
 
-
+#training loop example
 if __name__ == "__main__":
     X = np.array([
         [1,2,3],
