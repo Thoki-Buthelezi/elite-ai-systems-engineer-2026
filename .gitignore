@@ -1,6 +1,7 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+*.pyc
 *$py.class
 # C extensions
 *.so
@@ -87,6 +88,7 @@ env
 venv
 env/
 venv/
+venv311/
 ENV/
 env.bak/
 venv.bak/
@@ -113,10 +115,12 @@ cython_debug/
 # Python cache
 __pycache__/
 *.py[cod]
+*pyc
 
 # virtual environments
 venv/
 .venv/
+venv311/
 
 # experiment outputs
 results/
