@@ -122,6 +122,5 @@ venv/
 .venv/
 venv311/
 
-# experiment outputs
-results/
-plots/
+#vscode
+.vscode
