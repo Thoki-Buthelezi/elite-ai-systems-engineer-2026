@@ -115,7 +115,7 @@ cython_debug/
 # Python cache
 __pycache__/
 *.py[cod]
-*pyc
+*.pyc
 
 # virtual environments
 venv/

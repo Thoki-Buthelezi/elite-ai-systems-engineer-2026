@@ -1,201 +1,99 @@
-# Elite AI Systems Engineer
+# Elite AI Systems Engineer — 52-week plan
 
-This repository documents my structured journey toward becoming an **AI Systems Engineer**.  
-The goal of this project is to deeply understand how modern AI systems work by **studying theory, implementing algorithms from first principles, and running controlled experiments**.
+This is my personal repo documenting a structured 52-week self-study program
+aimed at landing an AI systems engineering role. The focus is on
+actually understanding how modern AI systems work, not just using libraries.
 
-The study plan spans **52 weeks (~1040 hours)** and focuses on the mathematical, algorithmic, and systems aspects of machine learning.
-
-Instead of relying only on libraries, the approach emphasizes:
-
-- implementing algorithms from scratch
-- understanding the mathematics behind them
-- benchmarking and documenting results
-- building increasingly complex AI systems
+Every week has a shippable artifact — working code, a trained model, a
+benchmark, or a writeup. No week is complete without one.
 
 ---
 
-# Learning Plan
+## What this is
 
-The learning process is divided into four main phases.
+I am building up from first principles across four phases: transformers and
+alignment, CUDA and inference, distributed systems, and a final capstone.
+Each phase has concrete deliverables tied to real engineering skills.
 
-## Phase I — Mathematical & Optimization Core
-
-Focus:
-
-- Linear algebra
-- Gradient-based optimization
-- Backpropagation
-- Neural network fundamentals
-
-Implementations:
-
-- Linear regression
-- SGD and adaptive optimizers
-- computational graphs
-- mini autograd engine
-- CNN training
-
-Experiments include benchmarking optimizers and understanding convergence behaviour.
+The approach throughout is to implement things from scratch, understand the
+math behind them, run experiments, and document what I find.
 
 ---
 
-## Phase II — Architecture & Training Systems
+## Phases
 
-Focus:
+### Phase I — Transformers, LoRA, Alignment (weeks 3-14)
 
-- transformer architectures
-- GPT-style models
-- distributed training mechanics
-- LoRA fine-tuning
-- reinforcement learning from human feedback (RLHF)
+The focus here is on transformer architecture, fine-tuning with LoRA, and
+alignment fundamentals. Starting with a nanoGPT reproduction and working up
+to a fine-tuned model with a full evaluation pipeline.
 
-Deliverables include:
+### Phase II — CUDA, Quantisation, Inference (weeks 15-26)
 
-- training a small transformer model
-- implementing LoRA injection
-- building an evaluation pipeline
+Getting into the systems layer. Custom CUDA kernels, model quantisation,
+and inference optimisation. The goal is to understand what happens after
+training — how models actually run fast in production.
 
----
+### Phase III — Distributed Systems, OSS contributions (weeks 27-36)
 
-## Phase III — Systems & Inference Optimization
+Distributed training mechanics, parallelism strategies, and contributing to
+real open-source projects. At least two merged PRs by the end of this phase.
 
-Focus:
+### Phase IV — Capstone and public presence (weeks 37-52)
 
-- model quantization
-- inference acceleration
-- latency profiling
-- deployment pipelines
-
-Implementations include:
-
-- symmetric and asymmetric quantization
-- speculative decoding
-- inference API deployment
+Pulling everything together into a full AI system with a training pipeline,
+evaluation infrastructure, cost-performance analysis, and a public writeup.
+The capstone needs to score at least 85% on the graduation rubric.
 
 ---
 
-## Phase IV — Capstone AI System
+## Graduation requirements
 
-The final phase integrates all components into a full AI system.
+To close out the program I need to have shipped:
 
-Tasks include:
-
-- training pipeline design
-- evaluation infrastructure
-- performance optimization
-- cost-performance analysis
-- deployment of a complete AI system
-
----
-
-# Current Work
-
-### Optimization Algorithms
-
-The current focus is implementing and benchmarking several optimization algorithms from scratch.
-
-Implemented optimizers:
-
-- Adam
-- AdaGrad
-- RMSProp
-- Momentum
-
-These implementations are tested on a simple regression task to study their convergence behaviour.
-
-Example experiment:
-
-- recover parameter θ from synthetic data generated using  
-  **y = 3x**
-
-Results and analysis are documented in:
+- 1 capstone project
+- 52 weekly reports
+- 3 or more polished repos
+- 2 or more merged OSS pull requests
+- 5 or more blog posts
+- all benchmarks documented with real dollar figures
+- capstone rubric score of 85% or above
 
 ---
 
-# Repository Structure
+## Current status
 
-### Directory Overview
+Week 3 complete.
 
-**src/**  
-Contains implementations of algorithms and models.
+Artifact: nanoGPT reproduction trained on tinyShakespeare. Character-level
+tokenizer, 3-block transformer, 4 attention heads, n_embd=128. Trained for
+5000 steps. Final val loss: 1.98. Train/val gap: 0.07.
 
-**experiments/**  
-Scripts used to run experiments and generate results.
-
-**docs/**  
-Detailed documentation of experiments and findings.
-
-**visualizations/**  
-Graphs and animations showing optimization behaviour.
+Next up: LoRA implementation and fine-tuning.
 
 ---
 
-# Example Experiment
+## Repo structure
 
-A simple regression model was used to evaluate optimizer behaviour.
-
-Model: ŷ = θx
-Objective: minimize MSE(ŷ, y)
-
-
-Dataset:
-
-- 100 synthetic samples
-- generated using y = 3x
-
-The goal is for the optimizer to recover: θ ≈ 3
-
-
-Detailed findings are available in the experiment report.
+```
+elite-ai-systems-engineer-2026/
+|-- assets/          plots, results, and visualisations
+|-- datasets/        raw data used in experiments
+|-- docs/            longer writeups and notes
+|-- experiments/     scripts for running experiments
+|-- reports/         weekly reports, one per week
+|-- src/             model implementations and core code
+|-- requirements.txt
+|-- README.md
+```
 
 ---
 
-# Motivation
+## References
 
-Modern AI systems are built from several layers of abstraction.  
-This project focuses on understanding those layers by rebuilding them step by step.
-
-Key goals include:
-
-- understanding optimization dynamics
-- implementing training algorithms
-- studying neural architectures
-- building scalable AI systems
-
-By the end of the program, the repository should contain a full implementation pipeline covering:
-
-- training
-- evaluation
-- optimization
-- deployment
-
----
-
-# Future Experiments
-
-Planned experiments include:
-
-- learning rate sensitivity analysis
-- optimizer convergence comparison
-- visualization of gradient descent trajectories
-- animated optimization paths
-- scaling law experiments
-- transformer training
-
----
-
-# References
-
-Primary resources used throughout this study include:
-
-- *Deep Learning* — Goodfellow, Bengio, Courville
-- *Understanding Deep Learning* — Simon Prince
-- *Mathematics for Machine Learning*
-- research papers on transformers, optimization, and scaling laws
-
----
-
-# Progress
-
-This repository will evolve over time as each phase of the learning plan is completed.  
-All experiments, implementations, and reports will be documented here.
+- Attention Is All You Need — Vaswani et al.
+- nanoGPT — Andrej Karpathy
+- LoRA: Low-Rank Adaptation of Large Language Models — Hu et al.
+- Deep Learning — Goodfellow, Bengio, Courville
+- Understanding Deep Learning — Simon Prince
+- Mathematics for Machine Learning — Deisenroth, Faisal, Ong
