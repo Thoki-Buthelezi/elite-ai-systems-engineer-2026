@@ -123,4 +123,4 @@ venv/
 venv311/
 
 #vscode
-.vscode/
+.vscode/*
