@@ -73,7 +73,7 @@ def get_batch(split):
 
 #function to estimate the loss on train and val data
 @torch.no_grad()
-def estimate_loss():
+def estimate_loss(model):
     out = {}
     model.eval()
     #tell the model not to store intermediate value because we are not going to use backprop
@@ -82,6 +82,7 @@ def estimate_loss():
             losses = torch.zeros(eval_iters)
             for k in range(eval_iters):
                 X, Y = get_batch(split)
+                X, Y = X.to(device), Y.to(device)
                 logits, loss = model(X, Y)
                 losses[k] = loss.item()
             out[split] = losses.mean()
@@ -193,7 +194,7 @@ class BiLanguageModel(nn.Module):
         for _ in range(max_new_tokens):
             idx_cond = idx[:, -block_size:] #crop idx to the last block_size tokens
             #make predictions
-            logits, losss = self(idx_cond)
+            logits, loss = self(idx_cond)
             #focus only on the last time step
             logits = logits[:, -1, :] #becomes (B* C)
             #apply softmax to get probabilities
@@ -211,27 +212,37 @@ m = model.to(device)
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 
 
-for iter in range(max_iters):
-    #every once in a while evaluate the loss on train data and var data
-    if iter % eval_interval == 0:
-        losses = estimate_loss()
-        print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
+def train():
+    for iter in range(max_iters):
+        #every once in a while evaluate the loss on train data and var data
+        if iter % eval_interval == 0:
+            losses = estimate_loss(model=model)
+            print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
 
-    #sample a batch of data
-    xb, yb = get_batch("train")
+        #sample a batch of data
+        xb, yb = get_batch("train")
+        xb, yb = xb.to(device), yb.to(device)
+        #evaluate the loss
+        logits, loss = model(xb, yb)
+        #set gradients of parameters to zero
+        optimizer.zero_grad(set_to_none=True)
+        #perform backpropagation
+        loss.backward()
+        #update paramertes
+        optimizer.step()
 
-    #evaluate the loss
-    logits, loss = model(xb, yb)
-    #set gradients of parameters to zero
-    optimizer.zero_grad(set_to_none=True)
-    #perform backpropagation
-    loss.backward()
-    #update paramertes
-    optimizer.step()
+if __name__ == "__main__":
+    #train the model
+    train()
     
-#generate from model
-context = torch.zeros((1,1), dtype=torch.long, device=device)
-print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
+    #generate from model
+    context = torch.zeros((1,1), dtype=torch.long, device=device)
+    print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
+
+    #save the pretrained model
+    torch.save(model.state_dict(), "nano_gpt_model.pt")
+
+
 
 
 
