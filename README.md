@@ -67,7 +67,7 @@ Week 7 complete.
 
 Artifact: DPO on a nanoGPT model. SFT vs DPO reward scores
 
-Next up: Evaluation Science.
+Next up: Scaling laws.
 
 ---
 
