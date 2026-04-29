@@ -167,7 +167,7 @@ class BiLanguageModel(nn.Module):
         #each token directly reads off the logits for the next token from a lookup table
         self.token_embedding_table = nn.Embedding(vocab_size, n_embd)
         self.position_embedding_table = nn.Embedding(block_size, n_embd)
-        self.blocks = nn.Sequential(*[Block(n_embd, n_heads=num_heads) for _ in range(3)], nn.LayerNorm(n_embd))
+        self.blocks = nn.Sequential(*[Block(n_embd, n_heads=num_heads) for _ in range(4)], nn.LayerNorm(n_embd))
         self.lm_head = nn.Linear(n_embd, vocab_size)
 
     def forward(self, idx, targets=None):

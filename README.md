@@ -63,13 +63,11 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 3 complete.
+Week 7 complete.
 
-Artifact: nanoGPT reproduction trained on tinyShakespeare. Character-level
-tokenizer, 3-block transformer, 4 attention heads, n_embd=128. Trained for
-5000 steps. Final val loss: 1.98. Train/val gap: 0.07.
+Artifact: DPO on a nanoGPT model. SFT vs DPO reward scores
 
-Next up: LoRA implementation and fine-tuning.
+Next up: Evaluation Science.
 
 ---
 
