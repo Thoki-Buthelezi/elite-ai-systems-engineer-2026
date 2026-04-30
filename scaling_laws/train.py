@@ -25,7 +25,7 @@ output = {
 }
 
 # load dataset
-dataset = load_dataset("wikitext", "wikitext-103-raw-v1")
+dataset = load_dataset("wikitext", "wikitext-2-raw-v1")
 enc = tiktoken.get_encoding("gpt2")
 
 # tokenize
