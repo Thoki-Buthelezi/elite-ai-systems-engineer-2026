@@ -32,16 +32,18 @@ enc = tiktoken.get_encoding("gpt2")
 def tokenize(examples):
     return enc.encode_ordinary(examples["text"])
 
-train_tokens = []
-for example in dataset["train"]:
-    train_tokens.extend(enc.encode_ordinary(example["text"]))
-
-val_tokens = []
-for example in dataset["validation"]:
-    val_tokens.extend(enc.encode_ordinary(example["text"]))
+# tokenize in batches 
+train_tokens = enc.encode_ordinary(
+    " ".join([ex["text"] for ex in dataset["train"] if ex["text"].strip()])
+)
+val_tokens = enc.encode_ordinary(
+    " ".join([ex["text"] for ex in dataset["validation"] if ex["text"].strip()])
+)
 
 train_data = torch.tensor(train_tokens, dtype=torch.long)
 val_data = torch.tensor(val_tokens, dtype=torch.long)
+
+
 
 #define a function to sample a batch
 def get_batch(split, config):
