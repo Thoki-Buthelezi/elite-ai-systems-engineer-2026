@@ -63,13 +63,13 @@ def inject_lora(model, rank=8, alpha=16):
     return model
 
 #full usage of LoRA
-from nanoGPT_annotated.nano_gpt import BiLanguageModel, get_batch, estimate_loss
+from nanoGPT_annotated.nano_gpt import BiLanguageModel, get_batch, estimate_loss, config
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #load the pretrained model
-model = BiLanguageModel()
-model.load_state_dict(torch.load("nano_gpt_model.pt", map_location=device))
+model = BiLanguageModel(config)
+model.load_state_dict(torch.load("nanoGPT_annotated/model.pt", map_location=device))
 #inject lora to the  base model
 model = inject_lora(model, rank=8, alpha=16)
 
@@ -109,7 +109,7 @@ optimizer = torch.optim.Adam(
 
 def train():
     for iter in range(5000):
-        xb, yb = get_batch("train")
+        xb, yb = get_batch("train", config)
         xb, yb = xb.to(device), yb.to(device)
         logits, loss = model(xb, yb)
 
@@ -118,7 +118,7 @@ def train():
         optimizer.step()
 
         if iter % 200 == 0:
-            losses = estimate_loss(model=model)
+            losses = estimate_loss(model=model, config=config)
             print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['val']:.4f}")
 
 if __name__ == "__main__":

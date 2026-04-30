@@ -11,10 +11,10 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import random
-from src.optimizers.adagrad import AdaGrad
-from src.optimizers.adam import Adam
-from src.optimizers.momentum import Momentum
-from src.optimizers.rmsprop import RMSProp
+from optimizers.adagrad import AdaGrad
+from optimizers.adam import Adam
+from optimizers.momentum import Momentum
+from optimizers.rmsprop import RMSProp
 
 #create syntheic data
 data = []

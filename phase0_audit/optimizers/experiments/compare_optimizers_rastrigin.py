@@ -19,11 +19,11 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import math
 import random
 
-from src.optimizers.adagrad import AdaGrad
-from src.optimizers.momentum import Momentum
-from src.optimizers.rmsprop import RMSProp
-from src.optimizers.adam import Adam
-from src.functions.rastrigin import Rastrigin
+from optimizers.adagrad import AdaGrad
+from optimizers.momentum import Momentum
+from optimizers.rmsprop import RMSProp
+from optimizers.adam import Adam
+from functions.rastrigin import Rastrigin
 
 
 iterations = 10000

@@ -49,3 +49,8 @@ This repo is designed to:
 - Easy swap between full fine-tuning and LoRA mode
 
 ---
+
+## My Numbers
+- 664k total params, 46k trainable
+- 6.9% of the model doing all the learning
+- loss: 1.88 down to 1.83 over 2200 steps

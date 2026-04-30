@@ -4,10 +4,10 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import random
-from src.optimizers import adagrad
-from src.optimizers import adam
-from src.optimizers import rmsprop
-from src.optimizers import momentum
+from optimizers import adagrad
+from optimizers import adam
+from optimizers import rmsprop
+from optimizers import momentum
 
 """
     In the following program, I compare several optimizers to see which one 

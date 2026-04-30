@@ -5,11 +5,11 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import random
 import math
-from src.optimizers.adagrad import AdaGrad
-from src.optimizers.adam import Adam
-from src.optimizers.momentum import Momentum
-from src.optimizers.rmsprop import RMSProp
-from src.functions.rosenbrock_function import Rosenbrock
+from optimizers.adagrad import AdaGrad
+from optimizers.adam import Adam
+from optimizers.momentum import Momentum
+from optimizers.rmsprop import RMSProp
+from functions.rosenbrock_function import Rosenbrock
 
 iterations = 5000 #iterations number
 eps = 1e-6 #small constant for stopping condtion
