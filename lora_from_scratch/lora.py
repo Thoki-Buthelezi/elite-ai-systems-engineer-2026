@@ -63,7 +63,7 @@ def inject_lora(model, rank=8, alpha=16):
     return model
 
 #full usage of LoRA
-from nano_gpt import BiLanguageModel, get_batch, estimate_loss
+from nanoGPT_annotated.nano_gpt import BiLanguageModel, get_batch, estimate_loss
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 

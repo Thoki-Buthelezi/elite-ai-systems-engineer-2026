@@ -2,7 +2,7 @@ import json
 import matplotlib.pyplot as plt
 
 #open the file from result to read data from 
-with open("results/learning_rate_results.json", "r") as file:
+with open("optimizers/results/learning_rate_results.json", "r") as file:
     results = json.load(file)
 
 plt.figure(figsize=(8,5))
@@ -18,4 +18,4 @@ plt.title("Adam Learning Rate Comparison")
 
 plt.show()
 
-plt.savefig("plots/adam_learning_rates.py")
+plt.savefig("optimizers/plots/adam_learning_rates.py")

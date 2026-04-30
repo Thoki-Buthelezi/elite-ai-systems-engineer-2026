@@ -16,7 +16,7 @@ plt.figure(figsize=(8,6))
 plt.contour(X, Y, Z, levels=50, cmap="viridis")
 
 #import data
-with open("results/rosenbrock_results.json", "r") as file:
+with open("optimizers/results/rosenbrock_results.json", "r") as file:
     results = json.load(file)
 
 
@@ -35,6 +35,6 @@ plt.ylabel("y")
 plt.title("Optimizer Trajectories on Rosenbrock Function")
 plt.legend()
 
-plt.savefig("plots/optimizer_rosenbrock.png")
+plt.savefig("optimizers/plots/optimizer_rosenbrock.png")
 
 plt.show()

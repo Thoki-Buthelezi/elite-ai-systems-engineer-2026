@@ -240,7 +240,7 @@ if __name__ == "__main__":
     print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 
     #save the pretrained model
-    torch.save(model.state_dict(), "nano_gpt_model.pt")
+    torch.save(model.state_dict(), "nanoGPT_annotated/model.pt")
 
 
 

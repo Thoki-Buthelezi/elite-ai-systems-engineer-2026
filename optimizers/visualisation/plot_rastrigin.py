@@ -27,7 +27,7 @@ plt.contour(X, Y, Z, levels=50, cmap="viridis")
 
 #import data
 import json
-with open("results/rastrigin_results.json", "r") as file:
+with open("optimizers/results/rastrigin_results.json", "r") as file:
     results = json.load(file)
 
 #plot trajectory for each optimizer
@@ -47,7 +47,7 @@ plt.ylabel("y")
 plt.title("Optimizer Trajectories on Rastrigin Function")
 plt.legend()
 
-plt.savefig("plots/optimizer_rastrigin.png")
+plt.savefig("optimizers/plots/optimizer_rastrigin.png")
 
 plt.show()
 

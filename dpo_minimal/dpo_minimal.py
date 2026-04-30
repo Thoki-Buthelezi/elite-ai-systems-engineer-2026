@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import random
 
-from nano_gpt import BiLanguageModel, encode, decode, device, block_size
+from nanoGPT_annotated.nano_gpt import BiLanguageModel, encode, decode, device, block_size
 
 torch.manual_seed(1997)
 random.seed(1997)
@@ -93,14 +93,14 @@ def get_batch(batch_size=32):
 # -----------------------------
 def train(mode="dpo", iters=2000, lr=5e-6, beta=0.01):
     model = BiLanguageModel().to(device)
-    model.load_state_dict(torch.load("nano_gpt_model.pt"))
+    model.load_state_dict(torch.load("nanoGPT_annotated/model.pt"))
     model.train()
     optimizer = torch.optim.AdamW(model.parameters(), lr=lr)
 
     # reference model for DPO
     if mode == "dpo":
         ref_model = BiLanguageModel().to(device)
-        ref_model.load_state_dict(torch.load("nano_gpt_model.pt"))
+        ref_model.load_state_dict(torch.load("nanoGPT_annotated/model.pt"))
         ref_model.eval()
 
         for p in ref_model.parameters():
@@ -177,7 +177,7 @@ def benchmark(sft_model, dpo_model, n_batches=10):
 if __name__ == "__main__":
     # train SFT baseline
     sft_model = train(mode="sft")
-    torch.save(sft_model.state_dict(), "sft_final_model.pt")
+    torch.save(sft_model.state_dict(), "dpo_minimal/sft_final_model.pt")
     
     # train DPO on top
     dpo_model = train(mode="dpo")
