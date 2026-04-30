@@ -4,11 +4,13 @@ import json
 from datasets import load_dataset
 import tiktoken
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.makedirs("scaling_laws/results", exist_ok=True)
+
 from config import SMALL, MEDIUM, LARGE
 from nanoGPT_annotated.nano_gpt import BiLanguageModel, device
-
-import os
-os.makedirs("scaling_laws/results", exist_ok=True)
 
 max_iter = 5000
 eval_iter = 200
