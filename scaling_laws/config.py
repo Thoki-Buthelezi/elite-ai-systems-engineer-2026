@@ -12,7 +12,7 @@ class ModelConfig:
 SMALL = ModelConfig(
     vocab_size=50257,     
     block_size=256,
-    n_embd=128,
+    n_embd=64,
     n_heads=4,
     n_layers=4,
     dropout=0.1
@@ -21,17 +21,17 @@ SMALL = ModelConfig(
 MEDIUM = ModelConfig(
     vocab_size=50257,
     block_size=256,
-    n_embd=256,
-    n_heads=8,
-    n_layers=6,
+    n_embd=128,
+    n_heads=4,
+    n_layers=4,
     dropout=0.1
 )
 
 LARGE = ModelConfig(
     vocab_size=50257,
     block_size=256,
-    n_embd=512,
+    n_embd=256,
     n_heads=8,
-    n_layers=8,
+    n_layers=6,
     dropout=0.1
 )
