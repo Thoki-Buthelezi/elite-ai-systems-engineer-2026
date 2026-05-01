@@ -16,10 +16,10 @@ max_iter = 500
 eval_iter = 100
 learning_rate = 3e-4
 
-model_size = [SMALL, MEDIUM, LARGE]
+model_size = [MEDIUM, LARGE]
 
 output = {
-    "SMALL" : [],
+  #  "SMALL" : [],
     "MEDIUM" : [],
     "LARGE" : [],
 }
@@ -68,7 +68,7 @@ def estimate_loss(model, config):
     model.train()
     return out
 
-for size_name, config in zip(["SMALL", "MEDIUM", "LARGE"], model_size):
+for size_name, config in zip(["MEDIUM", "LARGE"], model_size):
     #instantiate a new model for each model size
     model = BiLanguageModel(config).to(device=device)
     #set the mode to train
