@@ -12,8 +12,8 @@ os.makedirs("scaling_laws/results", exist_ok=True)
 from config import SMALL, MEDIUM, LARGE
 from nanoGPT_annotated.nano_gpt import BiLanguageModel, device
 
-max_iter = 1000
-eval_iter = 50
+max_iter = 500
+eval_iter = 100
 learning_rate = 3e-4
 
 model_size = [SMALL, MEDIUM, LARGE]
@@ -113,6 +113,8 @@ for size_name, config in zip(["SMALL", "MEDIUM", "LARGE"], model_size):
                 "val_loss": losses["val"].item()
             }
             output[size_name].append(out)
+            with open(f"scaling_laws/results/{size_name}_output.json", "w") as f:
+                json.dump({size_name: output[size_name]}, f, indent=2)
     with open(f"scaling_laws/results/{size_name}_output.json", "w") as f:
         json.dump({size_name: output[size_name]}, f, indent=2)
 
