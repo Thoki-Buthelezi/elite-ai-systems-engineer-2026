@@ -101,7 +101,7 @@ for size_name, config in zip(["SMALL", "MEDIUM", "LARGE"], model_size):
         flops_consumed = 6 * param_count * seen_token
         
         #print out logs
-        if iter % 100 == 0:
+        if iter % eval_iter == 0:
             losses = estimate_loss(model, config)
             print(f"iter:{iter}, train loss:{losses["train"].item():.4f}, val loss:{losses["val"].item():.4f}",
                   f"FLOPS:{flops_consumed}")
