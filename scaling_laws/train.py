@@ -12,8 +12,8 @@ os.makedirs("scaling_laws/results", exist_ok=True)
 from config import SMALL, MEDIUM, LARGE
 from nanoGPT_annotated.nano_gpt import BiLanguageModel, device
 
-max_iter = 300
-eval_iter = 20
+max_iter = 500
+eval_iter = 50
 learning_rate = 3e-4
 
 model_size = [SMALL, MEDIUM, LARGE]
