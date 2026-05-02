@@ -63,11 +63,10 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 7 complete.
+Week 9 complete.
 
-Artifact: DPO on a nanoGPT model. SFT vs DPO reward scores
-
-Next up: Scaling laws.
+Artifact: 'Reproducing Chinchilla scaling on a budget' Log-log scaling charts
+Next up: Evaluation Science.
 
 ---
 
@@ -75,12 +74,11 @@ Next up: Scaling laws.
 
 ```
 elite-ai-systems-engineer-2026/
-|-- assets/          plots, results, and visualisations
-|-- datasets/        raw data used in experiments
-|-- docs/            longer writeups and notes
-|-- experiments/     scripts for running experiments
-|-- reports/         weekly reports, one per week
-|-- src/             model implementations and core code
+|-- scaling_laws                 implementation of the Chinchilla scaling law
+|-- lora_from_scarch             implementation of lora fine-tuning on nanoGPT from scracth
+|-- dpo_minial                   implementation of the DPO(Directi Preference Optimization) on the nanoGPT model
+|-- nanoGPT_annotated            nanoGPT model implementation with results
+|-- phase0_audit                 full directory of content covered in phase 0
 |-- requirements.txt
 |-- README.md
 ```
