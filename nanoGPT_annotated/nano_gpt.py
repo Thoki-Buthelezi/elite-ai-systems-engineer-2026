@@ -60,9 +60,7 @@ n = int(.9 * len(data))
 # and 90% train
 train_data = data[:n]
 #10% validate
-val_data = data[n:]
-
-#define a function to sample a batch
+val_data = data[n:]#define a function to sample a batch
 def get_batch(split, config: ModelConfig):
     data = train_data if split=="train" else val_data
     #create a random 1D vector of 32 integers to sample 32 chunks of sequnce with length 8 each
@@ -72,6 +70,8 @@ def get_batch(split, config: ModelConfig):
     #stack up a corresponding output for each context
     y = torch.stack([data[i+1:i+config.block_size+1] for i in ix])
     return x, y
+
+
 
 #function to estimate the loss on train and val data
 @torch.no_grad()

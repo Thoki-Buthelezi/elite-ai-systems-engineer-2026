@@ -1,0 +1,39 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "run_at_utc": "20260514_1232",
+  "cost_basis": "$0.1/hr (Colab Pro T4)",
+  "total_cost_usd": 0.1185,
+  "total_min": 71.16,
+  "results": [
+    {
+      "task": "hellaswag",
+      "description": "commonsense NLI completion",
+      "few_shot": 10,
+      "metric": "sample_len",
+      "score": 2511,
+      "duration_s": 1420.1,
+      "duration_min": 23.67,
+      "cost_usd": 0.0394
+    },
+    {
+      "task": "truthfulqa_mc2",
+      "description": "honesty / truthfulness (MC)",
+      "few_shot": 0,
+      "metric": "sample_len",
+      "score": 205,
+      "duration_s": 58.2,
+      "duration_min": 0.97,
+      "cost_usd": 0.0016
+    },
+    {
+      "task": "gsm8k",
+      "description": "grade-school math reasoning",
+      "few_shot": 5,
+      "metric": "sample_len",
+      "score": 330,
+      "duration_s": 2791.3,
+      "duration_min": 46.52,
+      "cost_usd": 0.0775
+    }
+  ]
+}

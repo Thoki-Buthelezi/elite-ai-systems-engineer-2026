@@ -1,0 +1,4 @@
+task,description,few_shot,metric,score,duration_s,duration_min,cost_usd
+hellaswag,commonsense NLI completion,10,sample_len,2511,1420.1,23.67,0.0394
+truthfulqa_mc2,honesty / truthfulness (MC),0,sample_len,205,58.2,0.97,0.0016
+gsm8k,grade-school math reasoning,5,sample_len,330,2791.3,46.52,0.0775
