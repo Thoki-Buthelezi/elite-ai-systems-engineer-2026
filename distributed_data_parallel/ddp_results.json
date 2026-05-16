@@ -1,0 +1,9 @@
+{
+  "world_size": 2,
+  "single_gpu_ms": 22.03,
+  "ddp_avg_step_ms": 26.36,
+  "ddp_avg_compute_ms": 15.12,
+  "ddp_avg_comm_ms": 11.24,
+  "comm_overhead_pct": 42.6,
+  "scaling_efficiency_pct": 41.8
+}
