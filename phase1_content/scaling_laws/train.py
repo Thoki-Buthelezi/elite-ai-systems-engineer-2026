@@ -7,10 +7,10 @@ import tiktoken
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.makedirs("scaling_laws/results", exist_ok=True)
+os.makedirs("phase1_content/scaling_laws/results", exist_ok=True)
 
 from config import SMALL, MEDIUM, LARGE
-from nanoGPT_annotated.nano_gpt import BiLanguageModel, device
+from phase1_content.nanoGPT_annotated.nano_gpt import BiLanguageModel, device
 
 max_iter = 500
 eval_iter = 50

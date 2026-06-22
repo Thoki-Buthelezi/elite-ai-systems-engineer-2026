@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 import random
 
-from nanoGPT_annotated.nano_gpt import BiLanguageModel, encode, decode, device, block_size, config
+from phase1_content.nanoGPT_annotated.nano_gpt import BiLanguageModel, encode, decode, device, block_size, config
 
 torch.manual_seed(1997)
 random.seed(1997)
@@ -177,7 +177,7 @@ def benchmark(sft_model, dpo_model, n_batches=10):
 if __name__ == "__main__":
     # train SFT baseline
     sft_model = train(mode="sft")
-    torch.save(sft_model.state_dict(), "dpo_minimal/sft_final_model.pt")
+    torch.save(sft_model.state_dict(), "phase1_content/dpo_minimal/sft_final_model.pt")
     
     # train DPO on top
     dpo_model = train(mode="dpo")

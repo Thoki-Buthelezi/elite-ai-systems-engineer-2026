@@ -5,13 +5,13 @@ from scipy.stats import linregress
 import os
 
 #load data from results files
-with open("scaling_laws/results/SMALL_output.json") as f:
+with open("phase1_content/scaling_laws/results/SMALL_output.json") as f:
     small_data = json.load(f)["SMALL"]
 
-with open("scaling_laws/results/MEDIUM_output.json") as f:
+with open("phase1_content/scaling_laws/results/MEDIUM_output.json") as f:
     medium_data = json.load(f)["MEDIUM"]
 
-with open("scaling_laws/results/LARGE_output.json") as f:
+with open("phase1_content/scaling_laws/results/LARGE_output.json") as f:
     large_data = json.load(f)["LARGE"]
 
 #extract flops and val_loss, skip step 0 
@@ -79,7 +79,7 @@ plt.title("Validation Loss vs Training Steps")
 plt.legend()
 plt.grid(True, linestyle="--", alpha=0.5)
 plt.tight_layout()
-plt.savefig("scaling_laws/results/loss_vs_steps.png", dpi=150)
+plt.savefig("phase1_content/scaling_laws/results/loss_vs_steps.png", dpi=150)
 plt.show()
 print("Saved loss_vs_steps.png")
 

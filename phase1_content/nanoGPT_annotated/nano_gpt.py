@@ -20,7 +20,7 @@ eval_iters = 200
 eval_interval = 200
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-from scaling_laws.config import ModelConfig
+from phase1_content.scaling_laws.config import ModelConfig
 
 config = ModelConfig(
     vocab_size=65,
@@ -33,7 +33,7 @@ config = ModelConfig(
 
 #read in shakespeare text file into a variable text
 #this could change to any dataset, depending on the objective
-with open("nanoGPT_annotated/datasets/tiny_shakespeare.txt", "r") as f:
+with open("phase1_content/nanoGPT_annotated/datasets/tiny_shakespeare.txt", "r") as f:
     text = f.read()
 
 
@@ -246,4 +246,4 @@ if __name__ == "__main__":
     print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 
     #save the pretrained model
-    torch.save(model.state_dict(), "scaling_laws/results/model.pt")
+    torch.save(model.state_dict(), "phase1_content/scaling_laws/results/model.pt")
