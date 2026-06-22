@@ -3,7 +3,7 @@ benchmark.py
 ------------
 Benchmarks FlashAttention-Triton vs naive PyTorch attention.
 
-Measures
+Measurese
 --------
 - Latency (ms)   : median of 100 timed kernel launches (after 10-run warm-up)
 - Peak HBM (MB)  : torch.cuda.max_memory_allocated() delta
@@ -87,12 +87,12 @@ def run_benchmarks(
         k = torch.randn_like(q)
         v = torch.randn_like(q)
 
-        # ── Latency ───────────────────────────────────────────────────────
+        # Latency
         lat_naive  = time_fn(naive_attention_pytorch, q, k, v)
         lat_triton = time_fn(flash_attention_triton,  q, k, v)
         speedup    = lat_naive / lat_triton
 
-        # ── Peak memory ───────────────────────────────────────────────────
+        # Peak memory
         mem_naive  = peak_memory_mb(naive_attention_pytorch, q, k, v)
         mem_triton = peak_memory_mb(flash_attention_triton,  q, k, v)
         mem_saved  = (1 - mem_triton / mem_naive) * 100   # %
