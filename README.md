@@ -63,10 +63,10 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 9 complete.
+Week 18 complete.
 
-Artifact: 'Reproducing Chinchilla scaling on a budget' Log-log scaling charts
-Next up: Evaluation Science.
+Artifact: 'Implement fused attention kernel in Triton. Compare latency and peak memory vs naive PyTorch attention.
+Next up: Quantisation.
 
 ---
 
@@ -74,11 +74,9 @@ Next up: Evaluation Science.
 
 ```
 elite-ai-systems-engineer-2026/
-|-- scaling_laws                 implementation of the Chinchilla scaling law
-|-- lora_from_scarch             implementation of lora fine-tuning on nanoGPT from scracth
-|-- dpo_minial                   implementation of the DPO(Directi Preference Optimization) on the nanoGPT model
-|-- nanoGPT_annotated            nanoGPT model implementation with results
-|-- phase0_audit                 full directory of content covered in phase 0
+|-- phase0_audit      full directory of content covered in phase 0
+|-- phase1_content    full directory of content covered in phase 1
+|-- phase2_content    full directory of content covered in phase 2     
 |-- requirements.txt
 |-- README.md
 ```
