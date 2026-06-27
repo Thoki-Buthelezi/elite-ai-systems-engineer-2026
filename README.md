@@ -63,10 +63,10 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 18 complete.
+Week 19 complete.
 
-Artifact: 'Implement fused attention kernel in Triton. Compare latency and peak memory vs naive PyTorch attention.
-Next up: Quantisation.
+Artifact: 'Implement symmetric + asymmetric INT8 quant from scratch. Apply GPTQ to nanoGPT model.
+Next up: 4-bit Quant & GGUF Export.
 
 ---
 
