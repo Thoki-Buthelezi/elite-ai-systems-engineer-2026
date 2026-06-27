@@ -1,7 +1,3 @@
-Here is a clean first draft of your `README.md`:
-
----
-
 ````markdown
 # GPTQ from Scratch (nanoGPT Quantization Artifact)
 
