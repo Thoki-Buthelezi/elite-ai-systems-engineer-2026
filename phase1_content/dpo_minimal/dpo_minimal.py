@@ -2,6 +2,13 @@ import torch
 import torch.nn.functional as F
 import random
 
+import sys
+import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
 from phase1_content.nanoGPT_annotated.nano_gpt import BiLanguageModel, encode, decode, device, block_size, config
 
 torch.manual_seed(1997)

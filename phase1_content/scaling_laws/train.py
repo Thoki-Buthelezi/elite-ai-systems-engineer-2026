@@ -6,7 +6,11 @@ import tiktoken
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
 os.makedirs("phase1_content/scaling_laws/results", exist_ok=True)
 
 from config import SMALL, MEDIUM, LARGE

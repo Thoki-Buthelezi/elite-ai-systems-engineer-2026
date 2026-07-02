@@ -62,14 +62,21 @@ def inject_lora(model, rank=8, alpha=16):
 
     return model
 
+import sys
+import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
 #full usage of LoRA
-from nanoGPT_annotated.nano_gpt import BiLanguageModel, get_batch, estimate_loss, config
+from phase1_content.nanoGPT_annotated.nano_gpt import BiLanguageModel, get_batch, estimate_loss, config
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #load the pretrained model
 model = BiLanguageModel(config)
-model.load_state_dict(torch.load("nanoGPT_annotated/model.pt", map_location=device))
+model.load_state_dict(torch.load("phase1_content/nanoGPT_annotated/model.pt", map_location=device))
 #inject lora to the  base model
 model = inject_lora(model, rank=8, alpha=16)
 

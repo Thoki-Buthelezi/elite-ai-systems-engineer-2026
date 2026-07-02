@@ -9,6 +9,13 @@ import torch
 import torch.nn as nn
 from torch.nn import functional as F
 
+import sys
+import os
+from pathlib import Path
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PROJECT_ROOT))
+
 #set seed to 1337 to reproduce same results as Karpathy
 torch.manual_seed(1337)
 
