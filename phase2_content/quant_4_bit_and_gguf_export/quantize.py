@@ -86,8 +86,7 @@ def quantize_q4_k_m(tensor: torch.Tensor) -> bytes:
                 packed_weights.append(byte)
 
         output.extend(packed_scales)
-        output.extend(packed_weights)
-
+        output.extend(packed_weights) 
     return bytes(output)
 
 

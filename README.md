@@ -63,10 +63,10 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 19 complete.
+Week 22 complete.
 
-Artifact: 'Implement symmetric + asymmetric INT8 quant from scratch. Apply GPTQ to nanoGPT model.
-Next up: 4-bit Quant & GGUF Export.
+Artifact: Export model to GGUF format. Compare Q4_K_M vs Q8_0 quality and speed. Run benchmarks on CPU and GPU.
+Next up: vLLM and PagedAttention.
 
 ---
 
