@@ -63,12 +63,12 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 22 complete.
+Week 23 complete.
 
-Artifact: Export model to GGUF format. Compare Q4_K_M vs Q8_0 quality and speed. Run benchmarks on CPU and GPU.
+Artifact: mplement draft+verify loop manually. Measure token acceptance rate and wall-clock speedup at different batch sizes.
 
 
-Next up: vLLM and PagedAttention.
+Next up: FSDP & Tensor Parallelism.
 
 ---
 
