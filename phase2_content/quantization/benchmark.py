@@ -1,3 +1,8 @@
+"""
+before running the script please ensure that the ModelConfig in the nanogpt.py in Phase1 are correct
+the config where changed for a different purpose
+"""
+
 import torch
 
 import sys

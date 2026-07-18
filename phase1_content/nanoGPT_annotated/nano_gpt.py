@@ -29,12 +29,13 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 from phase1_content.scaling_laws.config import ModelConfig
 
+#configurations for the Mq model(approximation model) later in phase2(speculative_decoding)
 config = ModelConfig(
     vocab_size=65,
     block_size=64,
-    n_embd=128,
-    n_layers=4,
-    n_heads=4,
+    n_embd=64,
+    n_layers=2,
+    n_heads=2,
     dropout=0.2
 )
 
@@ -253,4 +254,4 @@ if __name__ == "__main__":
     print(decode(m.generate(context, max_new_tokens=500)[0].tolist()))
 
     #save the pretrained model
-    torch.save(model.state_dict(), "phase1_content/scaling_laws/results/model.pt")
+    torch.save(model.state_dict(), "phase1_content/nanoFPT_annotated/model_mq.pt")
