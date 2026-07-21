@@ -63,12 +63,12 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 23 complete.
+Week 27 complete.
 
-Artifact: mplement draft+verify loop manually. Measure token acceptance rate and wall-clock speedup at different batch sizes.
+Artifact: Run FSDP across 2+ GPUs. Profile memory and throughput vs DDP. Understand shard strategies.
 
 
-Next up: FSDP & Tensor Parallelism.
+Next up: Pipeline Parallelism.
 
 ---
 
@@ -78,7 +78,8 @@ Next up: FSDP & Tensor Parallelism.
 elite-ai-systems-engineer-2026/
 |-- phase0_audit      full directory of content covered in phase 0
 |-- phase1_content    full directory of content covered in phase 1
-|-- phase2_content    full directory of content covered in phase 2     
+|-- phase2_content    full directory of content covered in phase 2
+|-- phase3_content    full directory of content covered in phase 3    
 |-- requirements.txt
 |-- README.md
 ```
