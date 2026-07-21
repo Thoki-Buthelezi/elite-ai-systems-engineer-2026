@@ -39,7 +39,7 @@ def speculative_step(model_p, model_q, prefix, gamma):
             # print(f"r->{r} , decision->accepted")
             accepted.append(x)
         else:
-            print(f"r->{r} , decision->rejected")
+           # print(f"r->{r} , decision->rejected")
             residual = torch.clamp(p_dist - q_dist, min=0) # min[0, p(x) - q(x)]
             residual = residual / residual.sum() # normalize
             x_new = torch.multinomial(residual, num_samples=1)
