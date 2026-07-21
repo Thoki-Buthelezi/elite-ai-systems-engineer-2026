@@ -24,7 +24,7 @@ from torch.nn.parallel import DistributedDataParallel as DDP
 
 from model import GPT, GPTConfig, Block
 
-
+# Initialise distributed setup
 def setup():
     dist.init_process_group(backend="nccl")
     local_rank = int(os.environ["LOCAL_RANK"])
@@ -35,7 +35,7 @@ def setup():
 def cleanup():
     dist.destroy_process_group()
 
-
+# Wrap up the model with either FSDP or DDP
 def build_model(cfg, mode, local_rank):
     model = GPT(cfg).to(local_rank)
 
