@@ -1,0 +1,18 @@
+{
+  "num_stages": 2,
+  "n_params_billions": 0.305,
+  "peak_mem_gb_by_stage": [
+    8.572,
+    10.366
+  ],
+  "avg_step_time_s": 2.3475,
+  "tokens_per_sec": 1744.9,
+  "compute_times": [
+    0.19547108570002364,
+    0.24855065630006265
+  ],
+  "predicted_bubble_fraction": 0.1111111111111111,
+  "observed_bubble_fraction": 0.15295223155370388,
+  "batch_size": 8,
+  "block_size": 512
+}
