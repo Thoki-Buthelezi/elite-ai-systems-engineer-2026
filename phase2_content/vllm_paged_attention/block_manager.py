@@ -1,3 +1,9 @@
+"""
+    This is a vLLM BlockManager simulation. It simulates how KV cache is managed during LLM inference.
+    It does not compute attention or store any Key/value tensor, Instead it simulates how GPU memory is shared,
+    copied, allocated  or freed 
+"""
+
 from collections import deque
 from dataclasses import dataclass
 import math
