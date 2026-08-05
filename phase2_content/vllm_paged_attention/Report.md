@@ -35,7 +35,7 @@ issuing a virtual address never has to know which physical frame it lands in.
 
 ## What I built
 
-Threee files, under `phase2_content/vllm_paged_attention/`:
+Three files, under `phase2_content/vllm_paged_attention/`:
 
 - **`block_manager.py`**: the core paging data structures. `PhysicalBlock` (a single
   fixed-size slot with a reference count), a free list of block IDs, and a per-sequence
