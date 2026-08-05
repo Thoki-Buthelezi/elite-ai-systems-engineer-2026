@@ -35,7 +35,7 @@ issuing a virtual address never has to know which physical frame it lands in.
 
 ## What I built
 
-Two files, under `phase2_content/vllm_paged_attention/`:
+Threee files, under `phase2_content/vllm_paged_attention/`:
 
 - **`block_manager.py`**: the core paging data structures. `PhysicalBlock` (a single
   fixed-size slot with a reference count), a free list of block IDs, and a per-sequence
@@ -50,6 +50,8 @@ Two files, under `phase2_content/vllm_paged_attention/`:
   (`NaiveAllocator`) that reserves `prompt_len + max_output_len` contiguously per
   request, the way existing serving systems do. Both allocators get the same total
   token-equivalent budget so the comparison is apples to apples.
+- **`memory_profile.py`**: compare the toy version I built, **`block_manager.py`** against a real production system
+  (vLLM) and understand how it manages GPU memory for the KV cache.
 
 ## Bugs I hit building this (worth keeping, not just fixing silently)
 
