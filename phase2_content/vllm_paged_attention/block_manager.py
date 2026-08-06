@@ -35,7 +35,7 @@ class BlockManager:
         for _ in range(needed):
             if not self.free_blocks:
                 raise RuntimeError("Out of GPU KV cache blocks")
-            block_id = self.free_blocks.pop()
+            block_id = self.free_blocks.pop() 
             self.physical_blocks[block_id].ref_count = 1
             table.append(block_id)
         self.block_tables[seq.id] = table
@@ -43,9 +43,9 @@ class BlockManager:
     def needs_new_block(self, seq) -> bool:
         table = self.block_tables[seq.id]
         last_block = table[-1]
-        if seq.num_tokens % self.block_size == 0:
+        if seq.num_tokens % self.block_size == 0: # current last block is full
             return True
-        if self.physical_blocks[last_block].ref_count > 1:
+        if self.physical_blocks[last_block].ref_count > 1: # last shared block, need COW
             return True
         return False
 
@@ -58,12 +58,15 @@ class BlockManager:
     def append_slot(self, seq):
         table = self.block_tables[seq.id]
         last_block = table[-1]
+        # allocate a fresh empty block
         if seq.num_tokens % self.block_size == 0:
             if not self.free_blocks:
                 raise RuntimeError("Out of GPU KV cache blocks")
             new_block = self.free_blocks.pop()
             self.physical_blocks[new_block].ref_count = 1
             table.append(new_block)
+
+        # COW 
         elif self.physical_blocks[last_block].ref_count > 1:
             if not self.free_blocks:
                 raise RuntimeError("Out of GPU KV cache blocks")
