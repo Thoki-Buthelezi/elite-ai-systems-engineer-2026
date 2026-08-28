@@ -63,12 +63,13 @@ To close out the program I need to have shipped:
 
 ## Current status
 
-Week 27 complete.
+Week 32 complete.
 
-Artifact: Run FSDP across 2+ GPUs. Profile memory and throughput vs DDP. Understand shard strategies.
+Artifact: Technical writeup: 'How vLLM manages KV cache memory'
 
+Skipping week 33-34, will come back later for OSS Sprint Contirbution
 
-Next up: Pipeline Parallelism.
+Next up: Cost Modelling & SLA Engineering.
 
 ---
 
