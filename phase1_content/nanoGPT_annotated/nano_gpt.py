@@ -29,21 +29,20 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 from phase1_content.scaling_laws.config import ModelConfig
 
-#configurations for the Mq model(approximation model) later in phase2(speculative_decoding)
 config = ModelConfig(
     vocab_size=65,
     block_size=64,
-    n_embd=64,
-    n_layers=2,
-    n_heads=2,
+    n_embd=128,
+    n_layers=4,
+    n_heads=4,
     dropout=0.2
 )
-
 #read in shakespeare text file into a variable text
 #this could change to any dataset, depending on the objective
-with open("phase1_content/nanoGPT_annotated/datasets/tiny_shakespeare.txt", "r") as f:
-    text = f.read()
+DATA_PATH = Path(__file__).resolve().parent / "datasets" / "tiny_shakespeare.txt"
 
+with open(DATA_PATH, "r") as f:
+    text = f.read()
 
 #tokenizer text into subword/units
 chars = list(set(text))
