@@ -17,7 +17,7 @@ max_iters = 500
 eval_iters = 50
 eval_interval = 200
 block_size = 1024
-batch_size = 4
+batch_size = 2
 
 
 if not torch.cuda.is_available():
