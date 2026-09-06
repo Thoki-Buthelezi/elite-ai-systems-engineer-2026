@@ -10,13 +10,18 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 #hyperparameters
 batch_size = 8
 learning_rate = 1e-4
 max_iters = 500
 eval_iters = 50
 eval_interval = 200
-device = "cuda" if torch.cuda.is_available() else "cpu"
+
+if not torch.cuda.is_available():
+    raise RuntimeError("CUDA GPU is required for this benchmark.")
+
+device = "cuda" 
 
 # tokenize each row
 def tokenize_function(examples):
@@ -83,17 +88,17 @@ def estimate_loss(model):
     out = {}
     model.eval()
     #tell the model not to store intermediate value because we are not going to use backprop
-    with torch.no_grad():
-        for split in ["train", "validation"]:
-            losses = torch.zeros(eval_iters)
-            for k in range(eval_iters):
-                X, Y = get_batch(split)
-                X, Y = X.to(device), Y.to(device)
+    for split in ["train", "validation"]:
+        losses = torch.zeros(eval_iters)
+        for k in range(eval_iters):
+            X, Y = get_batch(split)
+            X, Y = X.to(device), Y.to(device)
+            with torch.autocast(device_type="cuda", dtype=torch.float16):
                 _ , loss = model(X, Y)
-                losses[k] = loss.item()
-            out[split] = losses.mean()
-        model.train()
-        return out
+            losses[k] = loss.item()
+        out[split] = losses.mean()
+    model.train()
+    return out
 
 
 from models.model import GPT, GPTConfig
@@ -102,6 +107,8 @@ cfg = GPTConfig()
 model = GPT(cfg)
 model = model.to(device)
 optimizer = torch.optim.AdamW(model.parameters(), learning_rate)
+scaler = torch.amp.GradScaler("cuda")
+
 
 def train(mode):
     step_times = []
@@ -112,14 +119,21 @@ def train(mode):
         if device == "cuda":
             torch.cuda.synchronize()
         t0 = time.perf_counter()
+
         xb, yb = get_batch("train")
         xb, yb = xb.to(device), yb.to(device)
 
-        _ , loss = model(xb, yb)
+        # Autocast context: runs some ops in float16 for speed
+        with torch.autocast(device_type="cuda", dtype=torch.float16):
+            _ , loss = model(xb, yb)
+
         optimizer.zero_grad(set_to_none=True)
 
-        loss.backward()
-        optimizer.step()
+        # Scale loss to prevent underflow
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+
         if device == "cuda":
             torch.cuda.synchronize()
         t1 = time.perf_counter()
@@ -160,5 +174,5 @@ def write_to_log():
         
 if __name__ == "__main__":
     train("baseline")
-    torch.save(model.state_dict(), "CAPSTONE/models/gpt2_406m_week37_baseline.pt")
+    torch.save(model.state_dict(), "models/gpt2_406m_week37_baseline.pt")
 
