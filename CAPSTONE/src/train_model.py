@@ -12,11 +12,13 @@ import torch.nn.functional as F
 
 
 #hyperparameters
-batch_size = 8
 learning_rate = 1e-4
 max_iters = 500
 eval_iters = 50
 eval_interval = 200
+block_size = 1024
+batch_size = 4
+
 
 if not torch.cuda.is_available():
     raise RuntimeError("CUDA GPU is required for this benchmark.")
@@ -50,11 +52,6 @@ def flatten_tokens(dataset_split):
 
 train_data = flatten_tokens(tokenized_dataset["train"])
 val_data = flatten_tokens(tokenized_dataset["validation"])
-
-
-block_size = 1024
-batch_size = 8
-
 
 def get_batch(split):
     """
