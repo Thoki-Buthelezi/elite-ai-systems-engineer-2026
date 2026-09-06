@@ -65,11 +65,9 @@ To close out the program I need to have shipped:
 
 Week 32 complete.
 
-Artifact: Technical writeup: 'How vLLM manages KV cache memory'
+Artifact: Technical writeup: 'Cost Modelling & SLA Engineering'
 
-Skipping week 33-34, will come back later for OSS Sprint Contirbution
-
-Next up: Cost Modelling & SLA Engineering.
+Next up: Implementation of the CAPSTONE project
 
 ---
 
@@ -77,13 +75,20 @@ Next up: Cost Modelling & SLA Engineering.
 
 ```
 elite-ai-systems-engineer-2026/
+|-- CAPSTONE
+|   |-- models        model architectures and model definitions
+|   |-- src           training, benchmarking, and experiment scripts
+|   |-- logs          benchmark and experiment results
+|   |-- ...
+|
 |-- phase0_audit      full directory of content covered in phase 0
 |-- phase1_content    full directory of content covered in phase 1
 |-- phase2_content    full directory of content covered in phase 2
-|-- phase3_content    full directory of content covered in phase 3    
+|-- phase3_content    full directory of content covered in phase 3
 |-- requirements.txt
 |-- README.md
-```
+
+CAPSTONE contains the implementation and benchmarking work for the final AI systems engineering project. It brings together concepts developed throughout the previous phases, including model training, GPU memory management, distributed training, performance benchmarking, and inference optimization.
 
 ---
 
