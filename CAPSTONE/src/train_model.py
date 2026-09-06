@@ -146,7 +146,7 @@ def train(mode):
     
     try:
         if mode == "baseline":
-            with open("logs/week37_baseline.txt", "w", encoding="utf-8") as file:
+            with open("CAPSTONE/logs/week37_baseline.txt", "w", encoding="utf-8") as file:
                 file.write(f"Model name: GPT2-406M\n")
                 file.write(f"CUDA Version: {torch.version.cuda}\n")
                 file.write(f"GPU Model: {torch.cuda.get_device_name()}\n")
