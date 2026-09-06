@@ -9,6 +9,14 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+#hyperparameters
+batch_size = 8
+learning_rate = 1e-4
+max_iters = 500
+eval_iters = 50
+eval_interval = 200
+device = "cuda" if torch.cuda.is_available() else "cpu"
+
 
 class GPTConfig:
     def __init__(
@@ -17,7 +25,7 @@ class GPTConfig:
         block_size=1024,
         n_layer=24,
         n_head=16,
-        n_embd=2048,
+        n_embd=1024,
         dropout=0.0,
     ):
         self.vocab_size = vocab_size
@@ -122,8 +130,10 @@ class GPT(nn.Module):
 
 
 if __name__ == "__main__":
-    # quick check of param count
+    quick check of param count
     cfg = GPTConfig()
     m = GPT(cfg)
     n = m.num_params()
     print(f"Total params: {n:,} ({n / 1e9:.2f}B)")
+
+
