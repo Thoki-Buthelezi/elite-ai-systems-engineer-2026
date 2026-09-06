@@ -171,5 +171,5 @@ def write_to_log():
         
 if __name__ == "__main__":
     train("baseline")
-    torch.save(model.state_dict(), "models/gpt2_406m_week37_baseline.pt")
+    torch.save(model.state_dict(), "CAPSTONE/models/gpt2_406m_week37_baseline.pt")
 

@@ -17,7 +17,7 @@ class GPTConfig:
         block_size=1024,
         n_layer=24,
         n_head=16,
-        n_embd=2048,
+        n_embd=1024,
         dropout=0.0,
     ):
         self.vocab_size = vocab_size
@@ -119,8 +119,8 @@ class GPT(nn.Module):
 
 
 if __name__ == "__main__":
-    # quick check of param count
     cfg = GPTConfig()
-    m = GPT(cfg)
-    n = m.num_params()
-    print(f"Total params: {n:,} ({n / 1e9:.2f}B)")
+    model = GPT(cfg)
+    num_params = sum(p.numel() for p in model.parameters())
+    print(f"Parameters: {num_params:,}")
+    print(f"Parameters (millions): {num_params / 1e6:.2f}")
