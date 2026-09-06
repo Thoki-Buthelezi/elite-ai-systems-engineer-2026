@@ -109,8 +109,8 @@ def train(mode):
         if iter % eval_interval == 0:
             losses = estimate_loss(model=model)
             print(f"step {iter}: train loss {losses['train']:.4f}, val loss {losses['validation']:.4f}")
-
-        torch.cuda.synchronize()
+        if device == "cuda":
+            torch.cuda.synchronize()
         t0 = time.perf_counter()
         xb, yb = get_batch("train")
         xb, yb = xb.to(device), yb.to(device)
@@ -120,7 +120,8 @@ def train(mode):
 
         loss.backward()
         optimizer.step()
-        torch.cuda.synchronize()
+        if device == "cuda":
+            torch.cuda.synchronize()
         t1 = time.perf_counter()
 
         if iter > 0:
