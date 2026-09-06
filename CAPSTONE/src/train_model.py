@@ -18,6 +18,7 @@ eval_iters = 50
 eval_interval = 200
 block_size = 1024
 batch_size = 2
+amp_dtype = torch.float16
 
 
 if not torch.cuda.is_available():
@@ -90,7 +91,7 @@ def estimate_loss(model):
         for k in range(eval_iters):
             X, Y = get_batch(split)
             X, Y = X.to(device), Y.to(device)
-            with torch.autocast(device_type="cuda", dtype=torch.float16):
+            with torch.autocast(device_type="cuda", dtype=amp_dtype):
                 _ , loss = model(X, Y)
             losses[k] = loss.item()
         out[split] = losses.mean()
@@ -121,7 +122,7 @@ def train(mode):
         xb, yb = xb.to(device), yb.to(device)
 
         # Autocast context: runs some ops in float16 for speed
-        with torch.autocast(device_type="cuda", dtype=torch.float16):
+        with torch.autocast(device_type="cuda", dtype=amp_dtype):
             _ , loss = model(xb, yb)
 
         optimizer.zero_grad(set_to_none=True)
@@ -151,6 +152,8 @@ def train(mode):
                 file.write(f"CUDA Version: {torch.version.cuda}\n")
                 file.write(f"GPU Model: {torch.cuda.get_device_name()}\n")
                 file.write(f"Tokens/sec: {round(throughput, 1) if step_times else float('nan')}\n")
+                file.write(f"Batch size: {batch_size}\n")
+                file.write(f"Autocast dtype: {amp_dtype}\n")
                 file.write(f"train loss {losses['train']:.4f}, val loss {losses['validation']:.4f}\n")
                 print("Logs written successfuly")
         else:
