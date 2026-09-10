@@ -121,7 +121,8 @@ def setup_training(mode):
     local_rank = int(os.environ["LOCAL_RANK"])
 
     if mode == "baseline":
-
+        device = torch.device(f"cuda:{local_rank}")
+        
         model = GPT(cfg)
         model = model.to(device)
 
