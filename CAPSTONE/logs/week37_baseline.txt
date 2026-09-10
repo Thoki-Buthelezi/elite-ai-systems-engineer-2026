@@ -1,7 +1,7 @@
 Model name: GPT2-406M
 CUDA Version: 12.8
 GPU Model: Tesla T4
-Tokens/sec: 3860.2
+Tokens/sec: 4302.6
 Batch size: 2
 Autocast dtype: torch.float16
-train loss 6.4504, val loss 6.3302
+train loss 6.4838, val loss 6.3963

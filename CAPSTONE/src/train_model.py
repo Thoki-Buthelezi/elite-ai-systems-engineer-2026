@@ -122,7 +122,7 @@ def setup_training(mode):
 
     if mode == "baseline":
         device = torch.device(f"cuda:{local_rank}")
-        
+
         model = GPT(cfg)
         model = model.to(device)
 
@@ -247,7 +247,7 @@ def train(args):
 
     for iter in range(max_iters):
 
-        if iter % eval_interval == 0:
+        if iter % eval_interval == 0 and rank == 0:
             losses = estimate_loss(model=model)
             print(
                 f"step {iter}: "
