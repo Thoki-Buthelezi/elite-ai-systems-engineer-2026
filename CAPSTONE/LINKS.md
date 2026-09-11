@@ -9,6 +9,7 @@ All public URLs for this capstone, per the required monorepo structure.
 ## Model Checkpoints
 
 - Week 37 (single-GPU baseline, GPT2-406M): https://huggingface.co/UncleScorch/gpt2-406m-week37
+- Week 38 (2-GPU ddp, GPT2-406M): https://huggingface.co/UncleScorch/gpt2-406m-week37
 
 ## Public Endpoint
 
